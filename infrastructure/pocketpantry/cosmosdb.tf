@@ -19,4 +19,5 @@ module "cosmosdb-collection-allcollections" {
   source = "../modules/cosmos-db-collection"
   cosmosdb_collection_name   = "allcollections"
   cosmosdb_database_name     = "${module.cosmosdb-database-pocketpantrydb.cosmosdb_database_name}"
+  cosmosdb_account_name      = "${module.cosmosdb.cosmosdb_account_name}"
 }
