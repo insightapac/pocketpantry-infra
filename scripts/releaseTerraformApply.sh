@@ -20,4 +20,4 @@ export ARM_SUBSCRIPTION_ID=${ARM_SUBSCRIPTION_ID:-$SUBSCRIPTION_ID} \
   ARM_CLIENT_SECRET=${ARM_CLIENT_SECRET:-$CLIENT_SECRET}
 
 # Run Terraform init
-terraform apply -auto-approve
+terraform apply -auto-approve pocket-pantry.plan
