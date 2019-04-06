@@ -5,6 +5,8 @@ resource "null_resource" "cosmosdb-collection" {
     environment {
       cosmosdb_account_name     = "${var.cosmosdb_account_name}"
       cosmosdb_database_name    = "${var.cosmosdb_database_name}"
+      cosmosdb_collection_name  = "${var.cosmosdb_collection_name}"
+      resource_group_name       = "${var.resource_group_name}"
     }
   }
 }
