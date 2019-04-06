@@ -8,7 +8,7 @@ data "azurerm_client_config" "current" {}
 module "resource-group" {
   source                  = "../modules/resource-group"
   resource-group_name     = "${local.solution-name-lower}-core"
-  resource-group_location = "${var.primary-region}"
+  resource-group_location = "${var.primary_region}"
   resource-group_tags = {
     solution    = "${local.solution-name}"
   }
