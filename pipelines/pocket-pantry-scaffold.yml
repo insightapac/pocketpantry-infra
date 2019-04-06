@@ -4,13 +4,6 @@ trigger:
   branches:
     include:
     - master
-  paths:
-    include:
-      - infrastructure
-      - scripts
-      - pipelines/pocket-pantry-scaffold.yml
-    exclude:
-      - src
 
 pool:
   vmImage: 'Ubuntu-16.04'
