@@ -13,8 +13,3 @@ module "resource-group" {
     solution    = "${local.solution-name}"
   }
 }
-module "resource-group-lock" {
-  source                = "../modules/resource-group-lock"
-  resource-group_name   = "${module.resource-group.resource-group_name}"
-  resource-group_id     = "${module.resource-group.resource-group_id}"
-}
