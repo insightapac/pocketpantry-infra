@@ -17,6 +17,13 @@ pool:
 
 steps:
 
+- task: AzureKeyVault@1
+  displayName: 'Retrieve Key Vault secrets'
+  inputs:
+    azureSubscription: 'veli-msdn'
+    KeyVaultName: 'pocketpantry-core-vault'
+    SecretsFilter: 'tf-remote-state-rg,tf-remote-state-account,tf-backend-container-core,tf-remote-state-account-primary-key'
+
 - task: ShellScript@2
   displayName: 'Install latest Terraform version'
   inputs:
@@ -28,6 +35,7 @@ steps:
     azureSubscription: 'veli-msdn'
     scriptLocation: scriptPath
     scriptPath: scripts/buildTerraformInit.sh
+    arguments: '$(tf-remote-state-rg) $(tf-remote-state-account) $(tf-remote-state-account-primary-key) $(tf-backend-container-core)'
     workingDirectory: infrastructure/pocketpantry
     addSpnToEnvironment: true
     failOnStandardError: true
@@ -38,6 +46,17 @@ steps:
     azureSubscription: 'veli-msdn'
     scriptLocation: scriptPath
     scriptPath: scripts/buildTerraformValidate.sh
+    workingDirectory: infrastructure/pocketpantry
+    addSpnToEnvironment: true
+    failOnStandardError: true
+
+- task: AzureCLI@1
+  displayName: 'terraform plan - Framework'
+  inputs:
+    azureSubscription: 'veli-msdn'
+    scriptLocation: scriptPath
+    scriptPath: scripts/buildTerraformPlan.sh
+    arguments: '$(tf-remote-state-rg) $(tf-remote-state-account) $(tf-remote-state-account-primary-key) $(tf-backend-container-core)'
     workingDirectory: infrastructure/pocketpantry
     addSpnToEnvironment: true
     failOnStandardError: true
