@@ -18,3 +18,7 @@ variable "apim_publisher_email" {
     description = "(Required) The publisher email for the API Management resource."
     default = "rene.brauwers@insight.com"
 }
+variable "key-vault_uri" {
+    description = "The URI of the core Key Vault."
+    default     = "https://pocketpantry-core-vault.vault.azure.net/"  
+}
