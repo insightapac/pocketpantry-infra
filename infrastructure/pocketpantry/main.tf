@@ -4,6 +4,10 @@ provider "azurerm" {
 provider "azuread" {
   version = "=0.2.0"
 }
+terraform {
+  backend "azurerm" {    
+  }
+}
 data "azurerm_client_config" "current" {}
 module "resource-group" {
   source                  = "../modules/resource-group"
