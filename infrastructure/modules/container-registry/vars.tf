@@ -14,6 +14,10 @@ variable "acr_sku" {
     description = "(Required) The SKU of the API Management resource."
     default     = "Basic"
 }
+variable "acr_admin" {
+    description = "(Required) Specifies whether the admin user is enabled."
+    default     = false
+}
 variable "resource-tags" {
     type        = "map"
     description = "(Required) The Resource Tags to be applied to the Container Registry."
